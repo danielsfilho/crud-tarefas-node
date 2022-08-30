@@ -5,9 +5,15 @@ const { mostrarMenu, pause } = require('./helpers/mensagens');
 console.clear();
 
 const main = async() => {
-  mostrarMenu()
+  
+  let opt = '';
 
-  pause()
+  do {
+    opt = await mostrarMenu();
+
+  } while ( opt != '0' );
+
+  pause();
 }
 
 main();
