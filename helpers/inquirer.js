@@ -6,7 +6,37 @@ const perguntas = [
     type: 'list',
     name: 'opcao',
     message: 'Oque você deseja fazer?',
-    choices: ['opt1', 'opt2', 'opt3']
+    choices: [
+      {
+        value: '1',
+        name: '1. Criar tarefa'
+      },
+      {
+        value: '2',
+        name: '2. Listar tarefa'
+      },
+      {
+        value: '3',
+        name: '3. Listar tarefas completadas'
+      },
+      {
+        value: '4',
+        name: '4. Listar tarefas pendentes'
+      },
+      {
+        value: '5',
+        name: '5. Completar tarefa(s)'
+      },
+      {
+        value: '6',
+        name: '6. Remover tarefa'
+      },
+      {
+        value: '0',
+        name: '0. Sair'
+      },
+
+    ]
   }
 ];
 
@@ -17,11 +47,27 @@ const inquirerMenu = async() => {
   console.log("===== Selecione uma opção =====".green);
   console.log("===============================\n".green);
 
-  const opt = await inquirer.prompt(perguntas)
+  const { opcao } = await inquirer.prompt(perguntas)
 
-  return opt
+  return opcao
+}
+
+const pauseMenu = async() => {
+
+  const inputPause = [
+    {
+      type: 'input',
+      name: 'questionPause',
+      message: `Pressione ${ 'ENTER'.green } para continuar`,
+    }
+  ];
+
+  console.log('\n');
+
+  await inquirer.prompt( inputPause );
 }
 
 module.exports = {
-  inquirerMenu
+  inquirerMenu,
+  pauseMenu
 }
