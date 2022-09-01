@@ -1,4 +1,4 @@
-
+const Tarefa = require('./tarefa');
 
 class Tarefas {
 
@@ -6,6 +6,12 @@ class Tarefas {
 
   constructor() {
     this._listado = {};
+  }
+
+  criarTarefa( desc = '' ) {
+
+    const tarefa = new Tarefa(desc);
+    this._listado[tarefa.id] = tarefa;
   }
 
 }
